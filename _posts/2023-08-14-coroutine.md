@@ -166,7 +166,7 @@ int main() {
 ```
   
 # Goroutine  
-``Go``언어에서는 이 coroutine을 한 단계 더 발전시켜 사용한다.  
+``Go``언어에서는 이 coroutine을 더 큰 범위에서 사용한다.  
 위의 OS Thread나 User Thread 둘을 같은 방식으로 프로그래밍 할 수있도록 런타임 스케쥴러가 내부적으로 존재한다.  
 또한, channel을 이용한 동기화를 지원한다. 이 channel은 동기적으로 작동되며, 채널을 기다리는 코드는 return될 때까지 대기상태가 된다.  
 이 두 특성을 사용하여, GO 언어의 goroutine은 IO작업이던, CPU작업이던 상관 없이 Goroutine을 통해 프로그래밍을 할 수 있다.  
