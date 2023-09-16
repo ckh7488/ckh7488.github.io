@@ -8,25 +8,36 @@ use_math: true
 ---
 
 ## 개요
-행렬 연산의 직관적인 이해를 위해, ``column space``의 관점에서 봐야 할 때가 있다.  
-column space 관점을 간단히 이해해보자.  
+행렬 연산의 직관적인 이해를 위해 ``column space``의 관점에서 봐야 할 때가 있다.  
+
 
 ## column space
-이름의 뜻 그대로, 세로선을 하나의 벡터로 보는 관점이다.  
-이 관점으로 볼 시, 곱셈의 접근이 달라지게 되는데,  
-$$\begin{pmatrix}a_{1} & b_{1}\\ a_{2} & b_{2} \end{pmatrix}\times\begin{pmatrix}x\\ y\end{pmatrix}=\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}x+\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}y$$
+이름의 뜻 그대로 세로선을 하나의 벡터로 보는 관점이다.  
+이 관점으로 볼 시 곱셈의 접근이 달라지게 되는데,  
+$$\begin{pmatrix}a_{1} & b_{1}\\ a_{2} & b_{2} \end{pmatrix}\times\begin{pmatrix}x\\ y\end{pmatrix}=\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}x+\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}y$$ &nbsp&nbsp&nbsp&nbsp&nbsp (1)
 이런 식으로 벡터의 곱이 column 벡터의 조합으로 표현 할 수 있다.  
-이 방식으로 행렬 곱셈을 이해할 때 재밌는 관점이 생기는데,  
-원래 벡터를 ``basis`의 조합으로 생각 할 수 있게 된다.  
-위의 $$\begin{pmatrix} x \\ y \end{pmatrix}$$벡터를 다시 생각해보면  
+이 방식으로 행렬 곱셈을 이해하게 되면 matrix와 vector의 곱은 ``basis`의 선형 조합이 된다.  
+위의 식에서, $$\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}$$를 a basis로, $$\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}$$를 b basis로 보자.   
+원래의 공간에서의 좌표 x,y가 변환된 ``basis a,b``를 기반으로 x,y좌표를 표시하는 공간변화의 관점으로 생각해보자.  
+
+## 공간변환의 관점
+위의 $$\begin{pmatrix} x \\ y \end{pmatrix}$$벡터는 [1,0] basis와 [0,1]의 basis로 좌표를 표시했다고 볼 수 있다.    
 $$\begin{pmatrix} x \\ y \end{pmatrix}=\begin{pmatrix} 1&0 \\ 0&1 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix}$$  
-위처럼 생각 할 수 있으며, 이는 $$\begin{pmatrix} 1 \\ 0 \end{pmatrix}x+\begin{pmatrix} 0 \\ 1 \end{pmatrix}y$$  
-처럼, 두 basis 1,0 과 0,1 의 선형 조합으로 이루어 져있다 볼 수 있다.  
-이 관점에서 위의 식을 다시 보면,  
+수식으로 $$\begin{pmatrix} 1 \\ 0 \end{pmatrix}x+\begin{pmatrix} 0 \\ 1 \end{pmatrix}y$$ 표현하면 좀더 이해하기 쉬워진다.  
+이 관점에서 ``식(1)``을 다시 보면,  
 basis a * x 와 basis b * y 로 판단이 가능하고,   
-이 표현은 결국 원래의 [1,0] 와 [0,1]의 basis에서 basis a, basis b 의 공간으로 변환이 이루어 졌다고 생각 할 수 있다.  
-행렬의 곱셈연산은 basis의 변경으로 인한 공간변환으로 해석이 가능해지고,  
-결과값은 공간에서 공간변환 이후의 좌표를 [1,0], [0,1] (I matrix) 를 basis로한 공간에서 표시한 것이라 볼 수 있다.  
+이 표현은 결국 원래의 [1,0] 와 [0,1]의 basis로 표현된 x,y 좌표가
+basis a, basis b 의 공간에서 x,y좌표 표현으로 ``변환``이 이루어 졌다고 생각 할 수 있다.  
+행렬의 곱셈연산을 공간 변환 후 변환 된 basis로 같은 좌표 x,y를 표현하는 것을 수식적으로 확인이 가능하다.    
+
+## 결과값
+곱셈의 결과값의 의미를 알아보자.  
+모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.  
+이 vector에 matrix를 좌곱하면 matrix의 각 column 을 basis로 하여 vector좌표를 표시하는 것으로 이해할 수 있다.  
+곱셈을 마친 후, 다시 vector형태로 돌아가게 되는데, 이는 다시 위의 ``모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.``의미로 볼 수 있다.  
+따라서, 
+공간변환(곱셈) 이후 나온 값은 matrix의 basis로 좌표 x,y를 나타낸 것을,  
+[1,0], [0,1] (즉 I matrix) 를 basis로한 공간에서 표시한 것이라 볼 수 있다.    
 
 ![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/f867afc9-6faa-4e34-aefd-f2f56607e157)  
 
