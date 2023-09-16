@@ -14,7 +14,7 @@ use_math: true
 ## column space
 이름의 뜻 그대로 세로선을 하나의 벡터로 보는 관점이다.  
 이 관점으로 볼 시 곱셈의 접근이 달라지게 되는데,  
-$$\begin{pmatrix}a_{1} & b_{1}\\ a_{2} & b_{2} \end{pmatrix}\times\begin{pmatrix}x\\ y\end{pmatrix}=\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}x+\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}y$$ &nbsp&nbsp&nbsp&nbsp&nbsp (1)
+$$\begin{pmatrix}a_{1} & b_{1}\\ a_{2} & b_{2} \end{pmatrix}\times\begin{pmatrix}x\\ y\end{pmatrix}=\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}x+\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}y$$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)  
 이런 식으로 벡터의 곱이 column 벡터의 조합으로 표현 할 수 있다.  
 이 방식으로 행렬 곱셈을 이해하게 되면 matrix와 vector의 곱은 ``basis``의 선형 조합이 된다.  
 위의 식에서, $$\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}$$를 a basis로, $$\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}$$를 b basis로 보자.   
