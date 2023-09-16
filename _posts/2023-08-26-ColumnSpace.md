@@ -16,7 +16,7 @@ use_math: true
 이 관점으로 볼 시 곱셈의 접근이 달라지게 되는데,  
 $$\begin{pmatrix}a_{1} & b_{1}\\ a_{2} & b_{2} \end{pmatrix}\times\begin{pmatrix}x\\ y\end{pmatrix}=\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}x+\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}y$$ &nbsp&nbsp&nbsp&nbsp&nbsp (1)
 이런 식으로 벡터의 곱이 column 벡터의 조합으로 표현 할 수 있다.  
-이 방식으로 행렬 곱셈을 이해하게 되면 matrix와 vector의 곱은 ``basis`의 선형 조합이 된다.  
+이 방식으로 행렬 곱셈을 이해하게 되면 matrix와 vector의 곱은 ``basis``의 선형 조합이 된다.  
 위의 식에서, $$\begin{pmatrix}a_{1}\\ a_{2}\end{pmatrix}$$를 a basis로, $$\begin{pmatrix}b_{1}\\ b_{2}\end{pmatrix}$$를 b basis로 보자.   
 원래의 공간에서의 좌표 x,y가 변환된 ``basis a,b``를 기반으로 x,y좌표를 표시하는 공간변화의 관점으로 생각해보자.  
 
@@ -32,9 +32,13 @@ basis a, basis b 의 공간에서 x,y좌표 표현으로 ``변환``이 이루어
 
 ## 결과값
 곱셈의 결과값의 의미를 알아보자.  
-모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.  
-이 vector에 matrix를 좌곱하면 matrix의 각 column 을 basis로 하여 vector좌표를 표시하는 것으로 이해할 수 있다.  
-곱셈을 마친 후, 다시 vector형태로 돌아가게 되는데, 이는 다시 위의 ``모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.``의미로 볼 수 있다.  
+  
+>>모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.
+>>이 vector에 matrix를 좌곱하면 matrix의 각 column 을 basis로 하여 vector좌표를 표시하는 것으로 이해할 수 있다.
+  
+곱셈을 마친 후, 다시 vector형태로 돌아간다.  
+이는 위의 ``모든 vector는 I matrix의 basis를 가진 공간에서 좌표를 표현 한 것이다.``의미로 볼 수 있다.  
+  
 따라서, 
 공간변환(곱셈) 이후 나온 값은 matrix의 basis로 좌표 x,y를 나타낸 것을,  
 [1,0], [0,1] (즉 I matrix) 를 basis로한 공간에서 표시한 것이라 볼 수 있다.    
