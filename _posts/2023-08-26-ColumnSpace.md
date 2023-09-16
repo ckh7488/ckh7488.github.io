@@ -26,3 +26,18 @@ basis a * x 와 basis b * y 로 판단이 가능하고,
 이 표현은 결국 원래의 [1,0] 와 [0,1]의 basis에서 basis a, basis b 의 공간으로 변환이 이루어 졌다고 생각 할 수 있다.  
 행렬의 곱셈연산은 basis의 변경으로 인한 공간변환으로 해석이 가능해지고,  
 결과값은 공간에서 공간변환 이후의 좌표를 [1,0], [0,1] (I matrix) 를 basis로한 공간에서 표시한 것이라 볼 수 있다.  
+
+![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/f867afc9-6faa-4e34-aefd-f2f56607e157)
+위의 그림에서 원래 공간의 1,1좌표는 $$\begin{pmatrix}2 & 0\\ 0 & 2\end{pmatrix}$$ 공간변화를 거친 후의 공간변화 이후의 좌표계에서는  1,1이다.  
+원래의 I matrix에서이 공간변환 된 좌표계의 값을 바라 볼 때, 값은 [2,2] 가 되고, 이는
+$$\begin{pmatrix}
+2 & 0\\ 
+0 & 2
+\end{pmatrix} \times \begin{pmatrix}
+1 \\ 
+1 
+\end{pmatrix}=\begin{pmatrix}
+2 \\ 
+2 
+\end{pmatrix}$$
+로 표현된다.  
