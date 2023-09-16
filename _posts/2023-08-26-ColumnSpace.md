@@ -32,8 +32,8 @@ basis a * x 와 basis b * y 로 판단이 가능하고,
 위의 그림에서 원래 공간의 1,1좌표는 $$\begin{pmatrix}2 & 0\\ 0 & 2\end{pmatrix}$$ 공간변화를 거친 후의 공간변화 이후의 좌표계에서는  1,1이다.  
 원래의 I matrix에서이 공간변환 된 좌표계의 값을 바라 볼 때, 값은 [2,2] 가 되고, 이는
 $$\begin{pmatrix}
-2 & 0\\ 
-0 & 2
+2 & 0 \\ 
+0 & 2 
 \end{pmatrix} \times \begin{pmatrix}
 1 \\ 
 1 
