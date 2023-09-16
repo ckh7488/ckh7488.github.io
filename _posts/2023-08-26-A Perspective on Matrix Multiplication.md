@@ -11,7 +11,9 @@ use_math: true
 행렬 곱셈의 직관적인 이해를 위해 ``column space``의 관점에서 봐야 할 때가 있다.  
 특히, 딥러닝쪽에서 행렬곱을 공간변환의 관점에서 말하는 경우가 많으므로 이 관점에 대한 직관적인 이해가 필요하다.  
 Column space의 정의는  
->The column space of a matrix is the set of all possible linear combinations of its column vectors  
+<br/>
+>The column space of a matrix is the set of all possible linear combinations of its column vectors
+<br/>
 인데, 이에 대한 내용을 아래에서 설명하고, 공간변환 관점을 알아보자.  
 
 ## column space 관점의 행렬 곱
