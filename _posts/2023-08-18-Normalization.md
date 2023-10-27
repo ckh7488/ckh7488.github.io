@@ -43,12 +43,15 @@ RDBMS 데이터는 효율적인 query 및 저장 (read/write)를 위해, 정규�
 * CRUD 작업 시 중복되는 항목이 있는 경우 모든 table을 다 확인해야하는 경우가 있다.
 * 특히, table이 복잡하고 row가 많을 경우, 계산의 복잡도가 빠르게 증가하므로, 이를 막기 위해 진행한다.
 
-## example
+## example  
+
 | StudentID | StudentName | CourseName | CourseInstructor |  
 |-----------|-------------|------------|------------------|  
 | 1         | Alice       | Math       | Mr. Smith        |  
 | 1         | Alice       | History    | Mrs. Jones       |  
 | 2         | Bob         | Math       | Mr. Smith        |    
+
+
 위의 표를 보면, 학생이름, 과목, 선생 모두 중복된 부분이 존재한다.    
 
 ### 문제점
@@ -70,20 +73,26 @@ RDBMS 데이터는 효율적인 query 및 저장 (read/write)를 위해, 정규�
 1. 학생 이름에만 학생ID에 종속된다.
 2. 선생은 여러 과목을 가르칠 수 있다. unique한 row가 되려면, 선생과 과목을 하나의 primary key로 묶는다.
 3. StudentID와 coureseID는 다대다 관계이다. 학생도 여러과목을 수강가능하고, 과목도 정원까지 학생을 수용한다. 연관 테이블을 만들어 연결시킨다.  
- *  N:M 관계의 경우 1:N 과 M:1의 관계를 만들어주는 연관 테이블을 만드는 경우가 많다.
-#### Students
+ *  N:M 관계의 경우 1:N 과 M:1의 관계를 만들어주는 연관 테이블을 만드는 경우가 많다.  
+  
+#### Students  
+
 | StudentID | StudentName |  
 |-----------|-------------|  
 | 1         | Alice       |  
 | 2         | Bob         |  
 
-#### Courses
+  
+#### Courses  
+
 | CourseID | CourseName | CourseInstructor |  
 |----------|------------|------------------|  
 | 1        | Math       | Mr. Smith        |  
 | 2        | History    | Mrs. Jones       |  
 
-#### Enrollment  
+  
+#### Enrollment    
+
 | StudentID | CourseID |  
 |-----------|----------|  
 | 1         | 1        |  
