@@ -7,20 +7,25 @@ tags: [Architect]
 ---
   
 # UI design pattern  
-MVC, MVP, MVVM은 UI 를 디자인하는 방법론이다.  
-현재에는 각 패턴이 쓰이던 ``문제점을 보완``하여 사용된다. 이 때문에, 특히 MVC와 MVP는 경계가 굉장히 모호해졌다.  
-때문에, 이 글에서는 처음 쓰이던 패턴을 알아보고, 보완사항등을 알아본다.  
+UI 를 디자인하는 방법론은 대표적으로 MVC, MVP, MVVM 3가지 이다.  
+현재에는 각 패턴이 쓰이던 ``문제점을 보완``하여 사용된다. 이로 인해 각 패턴사이의 경계가 굉장히 모호해졌다. (특히 MVC와 MVP는 거의 비슷하다)  
+이 글에서는 처음 모습의 패턴을 알아보고, 어떻게 보완되었는지 간단히 알아본다.  
 
     
 # MVC
-![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/a919817b-5011-4f33-af10-b9d60f62e9c3)
+![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/a919817b-5011-4f33-af10-b9d60f62e9c3)  
+  
 Controller가 Model, View에 의존한다.  
+  
 > 모든 유저 input/output이 controller를 통해 전달된다.  
 > controller는 받은 input에 따라 가지고 있는 Model, View에 변경사항을 적용한다.
 controller가 굉장히 비대해지며 여러 view에 의존하는 경향이 있다.
-따라서, 코드 재사용성이 떨어지며, 프로젝트가 거대해질수록 controller도 굉장히 거대해진다.  
+코드 재사용성이 떨어지며, 프로젝트가 커질수록 controller도 비례하여 커진다.
+  
+  
 ## code  
 JS로 이루어진 아주 간단한 예시코드
+  
 ```javascript
 class TaskModel {
     constructor() {
@@ -36,6 +41,7 @@ class TaskModel {
     }
 }
 ```
+  
 ```javascript
 //View
 class TaskView {
@@ -53,6 +59,7 @@ class TaskView {
     }
 }
 ```
+  
 ```javascript
 //controller code
 class TaskController {
@@ -74,12 +81,14 @@ class TaskController {
     }
 }
 ```
+  
 ```javascript
 //init
 const model = new TaskModel();
 const view = new TaskView();
 const controller = new TaskController(model, view);
 ```
+  
 ## 설명
 * 테스트 및 변경에 좋지 않다.
  * controller 테스트시, user input을 목업하기 힘들다.
