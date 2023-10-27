@@ -52,9 +52,5 @@ basis [1,0], basis [0,1] 좌표 공간에서 가지는 좌표를 보여준다.
   
 행렬 곱 이후 나온 값은 matrix의 basis로 좌표 x,y를 나타낸 것을,  
 [1,0], [0,1] (즉 I matrix) 를 basis로한 공간에서 표시한 것이라 볼 수 있다.    
-1 
-\end{pmatrix}=\begin{pmatrix}
-2 \\ 
-2 
-\end{pmatrix}$$
-로 표현된다.  
+
+
