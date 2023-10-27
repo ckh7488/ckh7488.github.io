@@ -7,7 +7,10 @@ tags: ["DB"]
 ---
 
 # DB
-DataBase를 쓰는 이유는 
+데이터를 저장하는 역할을 하는 프로그램을 통틀어 말함.   
+대부분 HDD/SDD에 저장하지만 몇몇은 RAM에 저장하여 사용하기도 한다.  
+  
+## DataBase를 쓰는 이유
 1. 어플리케이션이 자신의 상태와 관계없이 데이터를 보관하고 싶을 때.
  * 하드 디스크등의 저장소에 데이터를 read/write 한다.
 2. 데이터를 효율적으로 관리(read/write)하고 싶을 때
@@ -15,25 +18,38 @@ DataBase를 쓰는 이유는
   * > 100만개의 데이터를 저장하고, 이중 하나의 데이터만 필요할 때, 파일 read/write는 내용을 다 직접 한줄한줄(또는 특정 byte 만큼) 하드디스크에서 읽어와야 한다.
     > 이는 심각한 성능의 저하를 불러온다. DB는 자체적으로 read를 염두한 저장이 구현되어 위의 방법보다 훨씬 빠르고 효율적인 방법으로 데이터를 찾아오며, 쿼리 기능과 index등의 기술을 통해
     > 추가적으로 최적화도 가능하다.
+
+## DB 분류
+1. RDBMS : 관계형으로, table형태로 데이터를 저장한다. type 및 처음 DB scheme에 종속되어 데이터가 저장된다. 쿼리(특정 조건의 데이터 찾기)에 특화되어 있다.  
+2. NoSQL : Json과 비슷한 형식으로 데이터를 저장하며, type에 종속되지 않아 일기쓰듯이 데이터 저장이 가능하다.  
+3. In-Memory : 빠른 반응성을 위해 RAM에 데이터를 저장하는 DB이다.
+4. Time-Series : 시간이 키포인트가 되는 데이터를 저장할 때 사용된다.
+
+이 외에도 여려 DB가 있으나 다 적지는 않는다.  
+이 4가지중, 가장 많이 쓰이는 RDBMS를 알아본다.  
   
 # RDBMS란
-![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/b980280a-fd1e-434b-b31d-d5a34295021a)
+![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/b980280a-fd1e-434b-b31d-d5a34295021a)  
+  
 관계형 데이터 베이스(RDB)는 표 형식으로 데이터를 저장하는 DB를 말한다.  
 RDBMS는 RDB를 관리하는 시스템으로, 유저 인터페이스이다. 이 유저 인터페이스를 통하여 우리는 일관적으로 ``table`` 형식으로 데이터를 추상화 한다.
 ![image](https://github.com/ckh7488/ckh7488.github.io/assets/75701998/2615bfc7-860a-481c-83f5-60b0b892751f)
 
-# Normalization
+RDBMS 데이터는 효율적인 query 및 저장 (read/write)를 위해, 정규화(Normalization) 작업을 적용 한 후 DB에 저장한다.  
+  
+  
+# 정규화(Normalization)
 ``목적`` : CRUD 작업이 명확하게 실행되기 위해 Normalization을 함.
 * CRUD 작업 시 중복되는 항목이 있는 경우 모든 table을 다 확인해야하는 경우가 있다.
 * 특히, table이 복잡하고 row가 많을 경우, 계산의 복잡도가 빠르게 증가하므로, 이를 막기 위해 진행한다.
 
 ## example
-| StudentID | StudentName | CourseName | CourseInstructor |
-|-----------|-------------|------------|------------------|
-| 1         | Alice       | Math       | Mr. Smith        |
-| 1         | Alice       | History    | Mrs. Jones       |
-| 2         | Bob         | Math       | Mr. Smith        |  
-위의 표를 보면, 학생이름, 과목, 선생 모두 중복된 부분이 존재한다.  
+| StudentID | StudentName | CourseName | CourseInstructor |  
+|-----------|-------------|------------|------------------|  
+| 1         | Alice       | Math       | Mr. Smith        |  
+| 1         | Alice       | History    | Mrs. Jones       |  
+| 2         | Bob         | Math       | Mr. Smith        |    
+위의 표를 보면, 학생이름, 과목, 선생 모두 중복된 부분이 존재한다.    
 
 ### 문제점
 1. 삽입 이상 : 새로운 학생을 추가시, 무조건적으로 과목명과 선생이 붙어야 한다.
@@ -42,7 +58,7 @@ RDBMS는 RDB를 관리하는 시스템으로, 유저 인터페이스이다. 이 
 3. 삭제 이상 : 만약 Bob이 Math수업을 안듣는다고 했을 때, Bob이라는 학생의 모든 정보가 없어진다.
 위의 목적에서 설명했던 것 처럼, 이러한 당연한 작업들이 정상적으로 작동하기 위해서는 Normalization을 해줘야 한다.
 
-### 정규화  
+### 정규화 작업  
 정규화(Normalization)은 제1,2,3 정규화로 나뉘는데, 직관적으로 보면  
 > * 하나의 속성은 하나의 데이터만 가져야 한다.
 > * 중복되거나 불필요한 데이터를 제거한다.
@@ -56,22 +72,22 @@ RDBMS는 RDB를 관리하는 시스템으로, 유저 인터페이스이다. 이 
 3. StudentID와 coureseID는 다대다 관계이다. 학생도 여러과목을 수강가능하고, 과목도 정원까지 학생을 수용한다. 연관 테이블을 만들어 연결시킨다.  
  *  N:M 관계의 경우 1:N 과 M:1의 관계를 만들어주는 연관 테이블을 만드는 경우가 많다.
 #### Students
-| StudentID | StudentName |
-|-----------|-------------|
-| 1         | Alice       |
-| 2         | Bob         |
+| StudentID | StudentName |  
+|-----------|-------------|  
+| 1         | Alice       |  
+| 2         | Bob         |  
 
 #### Courses
-| CourseID | CourseName | CourseInstructor |
-|----------|------------|------------------|
-| 1        | Math       | Mr. Smith        |
-| 2        | History    | Mrs. Jones       |
+| CourseID | CourseName | CourseInstructor |  
+|----------|------------|------------------|  
+| 1        | Math       | Mr. Smith        |  
+| 2        | History    | Mrs. Jones       |  
 
-#### Enrollment
-| StudentID | CourseID |
-|-----------|----------|
-| 1         | 1        |
-| 1         | 2        |
-| 2         | 1        |
-
+#### Enrollment  
+| StudentID | CourseID |  
+|-----------|----------|  
+| 1         | 1        |  
+| 1         | 2        |  
+| 2         | 1        |  
+  
 로 표현 할 수 있다.  
